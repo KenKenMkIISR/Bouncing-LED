@@ -2,7 +2,10 @@
 市販のLEDテープのデモンストレーションがつまらないので、楽しめるアニメーションを作りました。  
 WS2812B搭載Adafruit NeoPixel互換LEDテープをArduino UNOで制御します。  
 Arduino IDEにNeoPixel用のライブラリを追加し、スケッチをコピーしてご利用ください。  
-LEDの総数、1ブロックの長さ、重力加速度、跳ね返り係数などのパラメータ変更も可能です。
+LEDの総数、1ブロックの長さ、重力加速度、跳ね返り係数などのパラメータ変更も可能です。  
+
+動画はこちら https://youtu.be/mlCTygT_cpE
+![](bouncingLED.jpg)
 
 # 接続
 LEDテープ側　　Arduino側  
