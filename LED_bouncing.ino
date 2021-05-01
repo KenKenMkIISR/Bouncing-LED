@@ -5,6 +5,7 @@
 
 #define PIN 6 //信号端子のピン番号
 #define LED_NUM 144  //LEDの総数
+// #define REVERSE //有効にすると逆向きに落下
 
 #define BLOCK 8 //LEDブロックの長さ
 #define BRIGHT 60 //明るさ
@@ -30,7 +31,11 @@ void set_block(uint16_t y,uint8_t c){
 
   for(uint8_t i=0;i<BLOCK;i++){
     if(y<0) break;
+#ifdef REVERSE
+    LED.setPixelColor(LED_NUM-1-(y--),rgb);
+#else
     LED.setPixelColor(y--,rgb);
+#endif
   }
 }
 
@@ -81,10 +86,20 @@ void loop() {
     for(int16_t i=LED_NUM-1;i>=(int16_t)(y>>8);i--){
       int32_t y1=((int32_t)i<<8)+(y&0xff)-v; //LED番号iの位置に次に落ちて来るLEDの現在位置
       if(y1>=y){
-        LED.setPixelColor(i,LED.getPixelColor((uint16_t)(y1>>8))); //y1の位置のLEDの色をLED番号iにコピー
+        //y1の位置のLEDの色をLED番号iにコピー
+#ifdef REVERSE
+        LED.setPixelColor(LED_NUM-1-i,LED.getPixelColor((uint16_t)(LED_NUM-1-(y1>>8))));
+#else
+        LED.setPixelColor(i,LED.getPixelColor((uint16_t)(y1>>8)));
+#endif
       }
       else{
-        LED.setPixelColor(i,LED.Color(0,0,0)); //最後尾より上はLED消灯
+        //最後尾より上はLED消灯
+#ifdef REVERSE
+        LED.setPixelColor(LED_NUM-1-i,LED.Color(0,0,0));
+#else
+        LED.setPixelColor(i,LED.Color(0,0,0));
+#endif
       }
     }
     LED.show();
