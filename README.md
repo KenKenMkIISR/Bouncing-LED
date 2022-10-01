@@ -1,6 +1,7 @@
 # 跳ねるLEDアニメーション
 市販のLEDテープのデモンストレーションがつまらないので、楽しめるアニメーションを作りました。  
 WS2812B搭載Adafruit NeoPixel互換LEDテープをArduino UNOやRaspberry Pi Pico、PICマイコンで制御します。  
+Raspberry Pi Pico向けBASICシステムMachiKania type P用も追加しました。  
 
 ArduinoではArduino IDEにNeoPixel用のライブラリを追加し、スケッチ「LED_bouncing.ino」をコピーしてご利用ください。  
   
@@ -9,6 +10,8 @@ Raspberry Pi Picoでは https://github.com/benevpi/pico_python_ws2812b からダ
 PIC16F18313ではpic16f18313ディレクトリ以下のファイルをMPLAB X IDEのプロジェクトに追加し、XC8コンパイラを指定してビルドしてください。HEXファイルも公開しました。  
 Microchip Code Configuratorを使用したのでファイル数が多くなっていますが、全て必要です。VDD、GND、RA5以外のピンには何も接続しないでください。  
   
+MachiKania type PではLIBディレクトリにWS2812Bクラスがあることを確認してください。  
+
 LEDの総数、1ブロックの長さ、重力加速度、跳ね返り係数などのパラメータは変更可能です。  
 
 動画はこちら https://youtu.be/mlCTygT_cpE
